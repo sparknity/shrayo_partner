@@ -1,0 +1,5 @@
+package com.spraknity.shreyo_partner
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()
