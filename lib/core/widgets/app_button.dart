@@ -132,7 +132,9 @@ class _AppButtonState extends State<AppButton> {
       height: widget.height ?? defaultHeight,
       child: Material(
         color: backgroundColor,
-        borderRadius: borderSide == null ? BorderRadius.circular(AppSpacing.radiusCard / 2) : null,
+        borderRadius: borderSide == null
+            ? BorderRadius.circular(AppSpacing.radiusCard / 2)
+            : null,
         shape: borderSide != null
             ? RoundedRectangleBorder(
                 side: borderSide,

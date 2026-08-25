@@ -6,11 +6,7 @@ import 'core/theme/app_theme.dart';
 import 'features/auth/presentation/providers/auth_provider.dart';
 
 void main() {
-  runApp(
-    const ProviderScope(
-      child: CaregiverApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: CaregiverApp()));
 }
 
 class CaregiverApp extends ConsumerStatefulWidget {
@@ -39,7 +35,14 @@ class _CaregiverAppState extends ConsumerState<CaregiverApp> {
       theme: AppTheme.lightTheme,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: const TextScaler.linear(1.0),
+          ),
+          child: child!,
+        );
+      },
     );
   }
 }
-

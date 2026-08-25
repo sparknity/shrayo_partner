@@ -23,8 +23,8 @@ import '../../features/protocol_library/presentation/screens/clinical_protocol_l
 import '../../features/support/presentation/screens/caregiver_support_hub_screen.dart';
 
 // Visits Workflow Screens
-import '../../features/visit_workflow/presentation/custom_screens/current_visit_screen.dart';
-import '../../features/visit_workflow/presentation/custom_screens/navigation_screen.dart';
+import '../../features/visit_workflow/presentation/screens/visit_details_screen.dart';
+import '../../features/visit_workflow/presentation/screens/live_route_navigation_screen.dart';
 import '../../features/visit_workflow/presentation/custom_screens/check_in_screen.dart';
 import '../../features/visit_workflow/presentation/custom_screens/care_assessment_screen.dart';
 import '../../features/visit_workflow/presentation/custom_screens/assessment_completion_screen.dart';
@@ -234,7 +234,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             routes: [
               GoRoute(
                 path: AppRoutes.visits,
-                builder: (context, state) => const CurrentVisitScreen(),
+                builder: (context, state) => const VisitDetailsScreen(),
               ),
             ],
           ),
@@ -323,7 +323,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       // Visits Pushed Workflow Routes
       GoRoute(
         path: AppRoutes.visitNavigate,
-        builder: (context, state) => const NavigationScreen(),
+        builder: (context, state) => const LiveRouteNavigationScreen(),
       ),
       GoRoute(
         path: AppRoutes.visitCheckIn,

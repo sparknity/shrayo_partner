@@ -123,7 +123,7 @@ class HomeRepositoryImpl implements HomeRepository {
           'longitude': longitude,
         },
       },
-      options: headers != null ? Options(headers: headers) : null,
+      options: Options(headers: headers),
       decoder: (_) {},
     );
   }
