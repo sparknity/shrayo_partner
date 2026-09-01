@@ -1,4 +1,4 @@
-# Caregiver App --- Home Module UI & Flow Specification {#caregiver-app--home-module-ui--flow-specification}
+ # Caregiver App --- Home Module UI & Flow Specification {#caregiver-app--home-module-ui--flow-specification}
 
 ## 1. Objective {#1-objective}
 
@@ -10,8 +10,8 @@ The design should not be only a collection of cards. The primary visit
 area must be **state-driven** so the same UI can later support:
 
 `ASSIGNED → ACCEPTED → ON_THE_WAY → ARRIVED → IN_PROGRESS → COMPLETED`
-
-Exception states:
+ 
+Excepti on states:
 
 `REJECTED / CANCELLED / FAILED / NO_SHOW`
 

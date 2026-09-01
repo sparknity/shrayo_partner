@@ -82,14 +82,20 @@ TextField( // or TextFormField
 
 ## 1b. Action & Modal Bottom Sheet Buttons (Emergency & Medicines Rule)
 
-Buttons inside modals, confirmation bottom sheets, and cards must maintain high usability and contrast:
+Buttons inside modals, confirmation bottom sheets, and cards must maintain high usability, flawless centering, and contrast:
 
-- **Touch Target & Height**: Modal action buttons (e.g. Cancel & Confirm) and card action buttons (e.g. "View Hospital on Map", "Mark as Given") must have a minimum height of **46–48dp**.
+- **Touch Target & Height**: Modal action buttons (e.g. Cancel & Confirm) and card action buttons (e.g. "View Hospital on Map", "Mark as Given") must have a minimum height of **46–50dp**.
 - **Clear Visual Hierarchy**:
   - **Secondary / Cancel Button**: High-contrast outline or solid white/slate surface (`side: BorderSide(color: Color(0xFFCBD5E1), width: 1.5)`), readable text (`fontSize: 14.5–15`, `fontWeight: FontWeight.w700`, color: `#334155`).
   - **Primary / Confirm Button**: Filled theme color (`#0052CC` or `#16A34A`), white text (`color: Colors.white`, `fontWeight: FontWeight.w800`, `fontSize: 14.5–15`).
-- **No Text Squeezing or Clipping**: Never use fixed-width buttons that can clip translated or longer action text. Wrap button labels with `FittedBox(fit: BoxFit.scaleDown)` or let them expand evenly (`Row` with `Expanded` children).
-- **Human-Readable Action Text**: Use clear, descriptive action text (e.g. "View Hospital on Map", "Confirm", "Cancel", "Call Ambulance (911)") rather than generic or unstyled labels. Always provide interactive SnackBar or navigation feedback on tap.
+- **Centering & Anti-Clipping Standard**:
+  - **NEVER** use naked `Flexible` inside `Row(mainAxisSize: MainAxisSize.min)` inside a button — this breaks flex alignment and cuts off text or misaligns trailing icons.
+  - Wrap button content in `FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.center, child: Row(mainAxisAlignment: MainAxisAlignment.center, mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.center, children: [...]))` so the text and arrow stay perfectly centered and scale down smoothly without getting clipped on narrow screens.
+- **Modal Bottom Sheets — Safe Insets & No Bottom-Cut Rule**:
+  - **Always** set `isScrollControlled: true` on `showModalBottomSheet`.
+  - **Always** wrap the root content of modal bottom sheets in `SafeArea(top: false, child: Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom + 20), child: SingleChildScrollView(...)))`.
+  - This guarantees bottom action buttons are NEVER clipped or obscured by the Android 3-button / gesture navigation bar or iOS home indicator.
+- **Human-Readable Action Text**: Use clear, descriptive action text (e.g. "Continue", "View Hospital on Map", "Confirm", "Cancel") rather than generic or unstyled labels. Always provide interactive feedback on tap.
 
 ---
 
